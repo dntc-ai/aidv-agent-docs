@@ -1,0 +1,47 @@
+site_name: AIDV Agent 文档站
+site_description: AIDV Agent —— 基于 LangGraph 编排的确定性工作流车载智能体
+site_url: https://dntc-ai.github.io/aidv-agent-docs/
+
+theme:
+  name: material
+  language: zh
+  palette:
+    scheme: slate
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - content.code.annotate
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight
+  - pymdownx.tabbed
+  - admonition
+  - toc:
+      permalink: true
+
+# nav 必须手写锁死(手册 2.2):AI 导出顺序会漂移,不许依赖
+nav:
+  - 概览: index.md
+  - 系统架构: architecture.md
+  - 模块:
+      - 项目概览与快速开始: modules/overview.md
+      - 系统架构总览: modules/system-architecture.md
+      - 内核包 DAG 与分层契约: modules/kernel-dag.md
+      - 工作流生命周期与 Gate 机制: modules/workflow-lifecycle.md
+      - 多域工具编排与 Patch 机制: modules/tool-orchestration.md
+      - 状态存储与数据流: modules/state-storage.md
+      - HMI 前端与调试台: modules/hmi-frontend.md
+      - agent_api 后端服务: modules/agent-api.md
+      - 语音会话服务: modules/omni-session.md
+      - LLM 规划与模型集成: modules/llm-integration.md
+      - 部署、基础设施与验收: modules/deployment.md
+      - 扩展与定制: modules/extensibility.md
