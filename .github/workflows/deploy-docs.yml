@@ -3,7 +3,7 @@ name: Deploy Docs
 on:
   push:
     branches: [main]
-    paths: ['docs/**', 'mkdocs.yml']
+    paths: ['docs/**', 'mkdocs.yml', 'pyproject.toml', 'uv.lock']
   workflow_dispatch:
 
 permissions:
@@ -21,13 +21,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - uses: astral-sh/setup-uv@v5
         with:
-          python-version: '3.11'
+          enable-cache: true
 
-      - run: pip install mkdocs-material
+      - run: uv sync --frozen
 
-      - run: mkdocs build
+      - run: uv run mkdocs build
 
       - uses: actions/upload-pages-artifact@v3
         with:

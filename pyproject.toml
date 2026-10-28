@@ -1,0 +1,10 @@
+[project]
+name = "aidv-agent-docs"
+version = "0.1.0"
+description = "AIDV Agent 文档站(DeepWiki 生成 + 人工校对,MkDocs Material 构建)"
+requires-python = ">=3.12"
+dependencies = [
+    # 锁死直接依赖;传递依赖由 uv.lock 全量锁定
+    # 升级流程:改此版本 → uv lock → 提交 pyproject.toml + uv.lock
+    "mkdocs-material==9.8.0",
+]
